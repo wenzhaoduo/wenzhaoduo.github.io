@@ -187,32 +187,57 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title" itemprop="headline">
                     
-                        <a class="link-unstyled" href="/2017/12/02/Hello-World/">
-                            Hello World
+                        <a class="link-unstyled" href="/2017/12/02/Build-personal-blog-on-Mac-using-hexo/">
+                            Build personal blog on Mac using hexo
                         </a>
                     
                 </h1>
                 <div class="postShorten-meta">
-    <time itemprop="datePublished" datetime="2017-12-02T16:29:39-05:00">
+    <time itemprop="datePublished" datetime="2017-12-02T14:06:02-05:00">
 	
 		    Dec 02, 2017
     	
     </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/others/">others</a>
+
+
     
 </div>
 
             </div>
             
                 <div class="postShorten-content" itemprop="articleBody">
-                    <p>Welcome to <a href="http://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">trobuleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+                    <h2 id="github-preparation"><a href="#github-preparation" class="headerlink" title="github preparation"></a>github preparation</h2><ol>
+<li>make sure you have github account and create a repository with name <code>[your github name].github.io</code>. For example, if my github account is <code>amy</code>, the created github repository should be <code>amy.github.io</code>.</li>
+<li>add a ssh key to your github account. First check whether a ssh key exists on your Mac.<pre><code>ls -al ~/.ssh
+</code></pre>If you don’t have one on your Mac, create one using the following command.<pre><code>ssh-keygen -t rsa -C your_email@example.com
+</code></pre></li>
+<li>add the generated ssh key to your github. <code>settings -&gt; ssh and gpg keys -&gt; new ssh key</code></li>
+</ol>
+<h2 id="hexo-preparation"><a href="#hexo-preparation" class="headerlink" title="hexo preparation"></a>hexo preparation</h2><ol>
+<li>install <a href="https://hexo.io/docs/" target="_blank" rel="noopener">hexo</a></li>
+<li><p>create a folder as the root diretory of your blog, e.g.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line">mkdir blog</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>initiate the root directory, i.e.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> blog</span><br><span class="line">hexo init</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>install some dependencies</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo --save</span><br><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>(optional) run a hexo server to preview. <code>hexo s</code>. Preview your blog at <a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a></p>
+</li>
+<li><p>modify the _config.yml in the <code>blog</code> directory. On the last line of the file (deploy section), makes it look like</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">    <span class="built_in">type</span>: git</span><br><span class="line">    repo: url of the repository.</span><br><span class="line">    branch: master</span><br></pre></td></tr></table></figure>
+<p> Remember the repository you just created? Copy its url and put it on the repo line.</p>
+</li>
+<li>run the command <code>hexo generate</code> to generate your blog.</li>
+<li>run the command <code>hexo deploy</code> to deploy your blog.</li>
+<li>visit the website <a href="https://amy.github.io" target="_blank" rel="noopener">https://amy.github.io</a> and enjoy your new blog!!</li>
+</ol>
 
                     
                         
@@ -220,7 +245,7 @@
                     
                     
                         <p>
-                            <a href="/2017/12/02/Hello-World/#post-footer" class="postShorten-excerpt_link link">
+                            <a href="/2017/12/02/Build-personal-blog-on-Mac-using-hexo/#post-footer" class="postShorten-excerpt_link link">
                                 Comment and share
                             </a>
                         </p>
